@@ -17,11 +17,24 @@
         <nav>
             <ul class="menu">
                 <li><a href="/">Atendimento</a></li>
-                <li><a href="/">Relatórios</a></li>
-                <li><a href="/">Sobre</a></li>
+                <li><a href="/">Cadastro</a></li>
+                <li><a href="/">Relatório</a></li>
             </ul>
         </nav>
     </header>
+
+    <section class = "section1">
+        <div>
+            <H2>Lista de todos os atendimentos</H2>
+        </div>
+        <div class = "dados_atendimento">
+            <ul class="lista_atendimentos">
+                {% for atendimento in atendimentos %}
+                    <span><a href="{{atendimento.id}}">{{atendimento.atendimento}} ===>> {{atendimento.assunto}}</a></span><br>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
 </body>
 
 </html>
