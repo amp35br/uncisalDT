@@ -25,14 +25,13 @@
 
     <section class = "section1">
         <div>
-            <H2>Lista de todos os atendimentos</H2>
+            <H2>Detalhe do atendimentos {{ detalhe.atendimento }}</H2>
         </div>
         <div class = "dados_atendimento">
-            <ul class="lista_atendimentos">
-                {% for atendimento in atendimentos %}
-                    <span><a href="detalhe/{{atendimento.id}}">{{atendimento.atendimento}} ===>> {{atendimento.assunto}}</a></span><br>
-                {% endfor %}
-            </ul>
+            <span>Tipo de público: {{detalhe.publico}}</span><br>
+            <span>Nome: {{detalhe.pessoa}}</span><br>
+            <span>Forma de atendimento: {{detalhe.tipo}}</span><br>
+            <span>Serviço: {{detalhe.assunto}}</span><br>
         </div>
     </section>
 </body>
