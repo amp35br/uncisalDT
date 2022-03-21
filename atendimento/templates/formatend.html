@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    {% load static %}
+    {% include "head.html" %}
+
+<body>
+    <h4>Ver cabeçalho aqui</h4>
+    <h5>Cadastro de novo atendimentos</h5>
+
+    <div class = "card">
+        <div class = 'card-body'>
+            <form action="{% url 'formatend_view' %}" method="post">
+                {% csrf_token %}
+                {{ form.as_p}}
+                <button type="submit", class="btn btn-success">Salvar</button>
+                <a href="/" class='btn btn-danger'>Cancelar</a>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
