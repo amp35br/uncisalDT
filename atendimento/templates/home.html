@@ -3,10 +3,10 @@
 
     {% load static %}
     {% include "head.html" %}
+    {% include "header.html" %}
 
 <body>
-    <h4>Ver cabeçalho aqui</h4>
-    <h5>Lista de atendimentos</h5>
+    <h5 style="text-align:center">Lista de atendimentos</h5>
 
     <div class = "card">
         <div class = 'card-body'>
@@ -19,7 +19,6 @@
                         <th>Nome</th>
                         <th>Forma</th>
                         <th>Assunto</th>
-                        <th>Ação</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,8 +30,8 @@
                         <td>{{atendimento.tipo}}</td>
                         <td>{{atendimento.assunto}}</td>
                         <td>
-                            <button class='btn btn-warning'>Editar</button>
-                            <button class='btn btn-danger'>Excluir</button>
+                            <a class='btn btn-warning' href="{% url 'formedit_view' atendimento.id%}">Editar</a>
+                            <a class='btn btn-danger' href="{% url 'fdel_view' atendimento.id%}" onclick="return confirm('Tem certeza que vai apagar?');" >Excluir</a>
                         </td>
                     {% endfor %}
                     </tr>
