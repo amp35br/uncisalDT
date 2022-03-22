@@ -1,5 +1,3 @@
-from webbrowser import get
-
 from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import formulario_atend
@@ -45,3 +43,8 @@ def formdelete(request, atender_pk):
     formdel.delete()
 
     return redirect('home_view')
+
+
+def dashboard(request):
+
+    return render(request, 'dashboard.html')
