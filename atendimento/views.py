@@ -1,3 +1,4 @@
+from django.db.models.aggregates import Count
 from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import formulario_atend
@@ -5,7 +6,7 @@ from .models import atender
 
 
 def home(request):
-    atendimentos = atender.objects.all()
+    atendimentos = atender.objects.all().order_by('-atendimento')
     return render(request, 'home.html', {'atendimentos': atendimentos})
 
 
@@ -46,5 +47,20 @@ def formdelete(request, atender_pk):
 
 
 def dashboard(request):
+    total_atend = atender.objects.all().aggregate(
+        Total_atendimentos=Count('atendimento'))
 
-    return render(request, 'dashboard.html')
+    total_aluno = atender.objects.filter(publico_id=2).count()
+    total_professor = atender.objects.filter(publico_id=3).count()
+    total_tecnico = atender.objects.filter(publico_id=4).count()
+
+    agrupados = atender.objects.values(
+        'publico').annotate(atendimentos=Count('publico'))
+
+    return render(request, 'dashboard.html',
+                  {'total_atend': total_atend,
+                   'total_aluno': total_aluno,
+                   'total_professor': total_professor,
+                   'total_tecnico': total_tecnico,
+                   'lista': agrupados,
+                   })

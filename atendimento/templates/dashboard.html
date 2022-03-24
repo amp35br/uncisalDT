@@ -10,7 +10,15 @@
 
     <div class = "card">
         <div class = 'card-body'>
+            <h5>Total de atendimentos (desde 03/2022): {{ total_atend.Total_atendimentos }}</h5>
+            <h5>Total alunos (desde 03/2022): {{ total_aluno }}</h5>
+            <h5>Total professor (desde 03/2022): {{ total_professor }}</h5>
+            <h5>Total tecnico (desde 03/2022): {{ total_tecnico }}</h5>
+
             
+            {% for agrup in lista %}
+            <h5>Público:{{agrup.publico}} Atendimentos: {{agrup.atendimentos}}</h5>
+            {% endfor %}
         </div>
     </div>
 
