@@ -1,20 +1,6 @@
 from django.db import models
 
 
-class atender(models.Model):
-    atendimento = models.DateField()
-    publico = models.ForeignKey(
-        "publico", on_delete=models.CASCADE, related_name='atendidos', null=True)
-    pessoa = models.CharField(max_length=150)
-    tipo = models.ForeignKey(
-        "tipo", on_delete=models.CASCADE, related_name='atendidos', null=True)
-    assunto = models.ForeignKey(
-        "assunto", on_delete=models.CASCADE, related_name='atendidos', null=True)
-
-    def __str__(self):
-        return str(self.atendimento)
-
-
 class assunto(models.Model):
     assunto = models.CharField(max_length=150)
 
@@ -34,3 +20,17 @@ class tipo(models.Model):
 
     def __str__(self):
         return self.tipo
+
+
+class atender(models.Model):
+    atendimento = models.DateField()
+    publico = models.ForeignKey(
+        publico, on_delete=models.CASCADE, related_name='atendidos', null=True)
+    pessoa = models.CharField(max_length=150)
+    tipo = models.ForeignKey(
+        tipo, on_delete=models.CASCADE, related_name='atendidos', null=True)
+    assunto = models.ForeignKey(
+        assunto, on_delete=models.CASCADE, related_name='atendidos', null=True)
+
+    def __str__(self):
+        return str(self.atendimento)

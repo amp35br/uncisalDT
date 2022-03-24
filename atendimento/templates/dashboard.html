@@ -15,9 +15,12 @@
             <h5>Total professor (desde 03/2022): {{ total_professor }}</h5>
             <h5>Total tecnico (desde 03/2022): {{ total_tecnico }}</h5>
 
-            
             {% for agrup in lista %}
             <h5>Público:{{agrup.publico}} Atendimentos: {{agrup.atendimentos}}</h5>
+            {% endfor %}
+
+            {% for pp in contagem %}
+            <h5>Público:{{pp.publico}} Atendimentos: {{pp.qtd}}</h5>
             {% endfor %}
         </div>
     </div>

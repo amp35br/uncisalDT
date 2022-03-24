@@ -2,7 +2,7 @@ from django.db.models.aggregates import Count
 from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import formulario_atend
-from .models import atender
+from .models import atender, publico
 
 
 def home(request):
@@ -57,10 +57,14 @@ def dashboard(request):
     agrupados = atender.objects.values(
         'publico').annotate(atendimentos=Count('publico'))
 
+    porp = publico.objects.values(
+        'publico').annotate(qtd=Count('atendidos__publico'))
+
     return render(request, 'dashboard.html',
                   {'total_atend': total_atend,
                    'total_aluno': total_aluno,
                    'total_professor': total_professor,
                    'total_tecnico': total_tecnico,
                    'lista': agrupados,
+                   'contagem': porp,
                    })
